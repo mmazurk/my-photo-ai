@@ -1,18 +1,16 @@
-import Head from 'next/head'
-import { Inter } from 'next/font/google'
-import Navbar from '@/navigation/navigation'
+import Head from "next/head";
+import Navbar from "@/navigation/navigation";
+import HomePage from "@/library/HomePage";
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>My App</title>
+        <title>My Ai Photos</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main className='container mt-5'>
-      <h1 className='text-center'>This is the home page.</h1>
-      </main>
+      <HomePage />
     </>
-  )
+  );
 }
