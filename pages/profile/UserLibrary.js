@@ -1,9 +1,8 @@
-
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState, useContext } from 'react';
-import MyPhotoAPI from '../api/api';
-import './userLibrary.css'
-import UserPrompt from './UserPrompt';
+import { useEffect, useState, useContext } from "react";
+import MyPhotoAPI from "../../api/api";
+import "./userLibrary.css";
+import UserPrompt from "./UserPrompt";
 import UserContext from "../auth/userContext";
 
 function UserLibrary() {
@@ -40,12 +39,13 @@ function UserLibrary() {
 
   async function remove(promptID) {
     const originalPrompts = [...prompts];
-    const refreshedPrompts = prompts.filter((item) => item.promptID !== promptID)
+    const refreshedPrompts = prompts.filter(
+      (item) => item.promptID !== promptID
+    );
     setPrompts(refreshedPrompts);
     try {
       let status = await MyPhotoAPI.deletePrompt(promptID);
       // console.log(status);
-
     } catch (err) {
       // console.log("You just failed with error(s):", err);
       setPrompts(originalPrompts);
@@ -129,7 +129,7 @@ function UserLibrary() {
                             remove={() => remove(item.promptID)}
                           />
                         ))}
-{/* 
+                        {/* 
                         <li className="list-group-item d-flex justify-content-between align-items-center">
                           <span>
                             <strong>[[ 2023-09-15: ]]</strong>&nbsp;This would
@@ -150,8 +150,11 @@ function UserLibrary() {
                   </div>
                   <div className="d-flex justify-content-between align-items-center">
                     <p className="fs-4 fw-bold mb-0">Tip of the Day</p>
-                    </div>
-                    <p className="p-4">Be very specific about the style of the image and provide detail about all the elements in it that you want to see!</p>
+                  </div>
+                  <p className="p-4">
+                    Be very specific about the style of the image and provide
+                    detail about all the elements in it that you want to see!
+                  </p>
                 </div>
               </div>
             </div>

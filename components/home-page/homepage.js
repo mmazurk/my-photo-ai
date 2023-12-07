@@ -1,17 +1,16 @@
 import { useRouter } from "next/navigation";
-import MyPhotoAPI from "@/api/api";
+import MyPhotoAPI from "../../api/my-photo-api";
 import jwtDecode from "jwt-decode";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 function HomePage() {
-
   const [user, setUser] = useState({});
   const [token, setToken] = useState(null);
   const [infoLoaded, setInfoLoaded] = useState(true);
 
   useEffect(
-      function loadUserInfo() {
-      console.log("loadUserInfo Ran")
+    function loadUserInfo() {
+      console.log("loadUserInfo Ran");
       setToken(localStorage.getItem("myAItoken"));
       async function getCurrentUser() {
         if (token) {

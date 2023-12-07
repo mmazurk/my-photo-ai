@@ -1,7 +1,7 @@
 import SearchForm from "./SearchForm";
-import SearchExamples from "./SearchExamples";
-import SearchPhotoResult from "./SearchPhotoResult";
-import LoadingIcon from "../common/LoadingIcon"
+import SearchExamples from "../../components/photo-search/search-examples";
+import SearchPhotoResult from "../../components/photo-search/search-photo-result";
+import LoadingIcon from "../common/LoadingIcon";
 import { useState } from "react";
 
 function SearchPage() {
@@ -16,21 +16,28 @@ function SearchPage() {
 
   return (
     <div>
-      {loading ? 
-      <>
-      <LoadingIcon />
-      <SearchExamples />
-      </>
-      : photoURL ?
-      <>
-      <SearchForm promptInstructions="Here is the photo you generated." setPhotoURLStatus={setPhotoURLStatus} setLoading={setLoading} />
-      <SearchPhotoResult prompt={prompt} url={photoURL}/> 
-      </>
-      : (
+      {loading ? (
+        <>
+          <LoadingIcon />
+          <SearchExamples />
+        </>
+      ) : photoURL ? (
+        <>
+          <SearchForm
+            promptInstructions="Here is the photo you generated."
+            setPhotoURLStatus={setPhotoURLStatus}
+            setLoading={setLoading}
+          />
+          <SearchPhotoResult prompt={prompt} url={photoURL} />
+        </>
+      ) : (
         <>
           <SearchForm
             promptInstructions="Type a prompt in the search box below to create images like the sample
-              images below! Make sure and use a descriptive prompt." setPhotoURLStatus={setPhotoURLStatus} setLoading={setLoading}/>
+              images below! Make sure and use a descriptive prompt."
+            setPhotoURLStatus={setPhotoURLStatus}
+            setLoading={setLoading}
+          />
           <SearchExamples />
         </>
       )}
