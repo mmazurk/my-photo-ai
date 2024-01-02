@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import FormItem from "./FormItem";
-import Alert from "../common/Alert";
+import { useRouter } from "next/router";
+import FormItem from "../ui/FormItem";
+import Alert from "../ui/Alert";
 
 function LoginForm({ login }) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const initialState = {
     username: "",
     password: "",
@@ -23,14 +23,16 @@ function LoginForm({ login }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(formData).then(function (status) {
-      if (status === "success") {
-        navigate("/");
-      } else {
-        // console.log("Login did not work");
-        setFormError(status);
-      }
-    });
+    console.log("formData is", formData);
+    console.log("login is", login);
+    // login(formData).then(function (status) {
+    //   if (status === "success") {
+    //     router.push("/");
+    //   } else {
+    //     console.log("Login did not work");
+    //     setFormError(status);
+    //   }
+    // });
   };
 
   return (
@@ -48,7 +50,9 @@ function LoginForm({ login }) {
                   key={item}
                 />
               ))}
-              {formError ? <Alert type="danger" messages={[formError]} /> : null}
+              {formError ? (
+                <Alert type="danger" messages={[formError]} />
+              ) : null}
               <button onClick={handleSubmit} className="btn btn-primary">
                 Submit
               </button>

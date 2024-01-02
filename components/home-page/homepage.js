@@ -1,18 +1,18 @@
 import { useRouter } from "next/navigation";
-import MyPhotoAPI from "../../api/my-photo-api";
+import MyPhotoAPI from "../../helpers/api/my-photo-api";
 import jwtDecode from "jwt-decode";
 import { useState, useEffect } from "react";
 
-function HomePage() {
+function HomePage(props) {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(null);
-  const [infoLoaded, setInfoLoaded] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(
     function loadUserInfo() {
-      console.log("loadUserInfo Ran");
       setToken(localStorage.getItem("myAItoken"));
       async function getCurrentUser() {
+        setIsLoading(true);
         if (token) {
           try {
             let { username } = jwtDecode(token);
@@ -21,10 +21,10 @@ function HomePage() {
             setUser(currentUser);
           } catch (err) {}
         }
-        setInfoLoaded(true);
       }
-      setInfoLoaded(false);
       getCurrentUser();
+      console.log("token is", token);
+      setIsLoading(false);
     },
     [token]
   );
@@ -58,7 +58,7 @@ function HomePage() {
               <button
                 className="btn btn-outline-light"
                 type="button"
-                onClick={() => router.push("/login")}
+                onClick={() => router.push("/auth")}
               >
                 Login
               </button>
