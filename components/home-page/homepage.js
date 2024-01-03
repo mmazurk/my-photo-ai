@@ -1,33 +1,33 @@
 import { useRouter } from "next/navigation";
 import MyPhotoAPI from "../../helpers/api/my-photo-api";
 import jwtDecode from "jwt-decode";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import UserContext from "../../store/user-context";
 
 function HomePage(props) {
-  const [user, setUser] = useState({});
-  const [token, setToken] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const { user, setUser, token, setToken } = useContext(UserContext);
 
-  useEffect(
-    function loadUserInfo() {
-      setToken(localStorage.getItem("myAItoken"));
-      async function getCurrentUser() {
-        setIsLoading(true);
-        if (token) {
-          try {
-            let { username } = jwtDecode(token);
-            MyPhotoAPI.token = token;
-            let currentUser = await MyPhotoAPI.getUser(username);
-            setUser(currentUser);
-          } catch (err) {}
-        }
+  useEffect(function loadUserInfo() {
+    async function getCurrentUser() {
+      setIsLoading(true);
+      let localStorageToken = localStorage.getItem("myAItoken");
+      if (localStorageToken) {
+        try {
+          let { username } = jwtDecode(localStorageToken);
+          MyPhotoAPI.token = localStorageToken;
+          let currentUser = await MyPhotoAPI.getUser(username);
+          setToken(localStorageToken);
+          setUser(currentUser);
+        } catch (err) {}
       }
-      getCurrentUser();
-      console.log("token is", token);
-      setIsLoading(false);
-    },
-    [token]
-  );
+    }
+    getCurrentUser();
+    setIsLoading(false);
+  }, []);
+
+  console.log("Current state of user is", user);
+  console.log("Current state of token is", token);
 
   const router = useRouter();
   return (

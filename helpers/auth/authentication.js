@@ -1,3 +1,7 @@
+import { useContext } from "react";
+import UserContext from "../../store/user-context";
+import MyPhotoAPI from "../api/my-photo-api";
+
 export async function signUp(formData) {
   try {
     let token = await MyPhotoAPI.signUpUser(formData);
@@ -11,10 +15,6 @@ export async function signUp(formData) {
   }
 }
 
-export async function logout() {
-  localStorage.removeItem("myAItoken");
-}
-
 export async function login(formData) {
   try {
     const token = await MyPhotoAPI.authUser(formData);
@@ -25,4 +25,11 @@ export async function login(formData) {
   } catch (err) {
     return err;
   }
+}
+
+export async function logout() {
+  const { setUSer, setToken } = useContext(UserContext);
+  localStorage.removeItem("myAItoken");
+  setUSer({});
+  setToken(null);
 }

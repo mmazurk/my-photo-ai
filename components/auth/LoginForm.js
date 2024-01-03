@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from "next/router";
 import FormItem from "../ui/FormItem";
 import Alert from "../ui/Alert";
+import UserContext from "../../store/user-context";
 
 function LoginForm({ login }) {
   const router = useRouter();
@@ -9,6 +10,8 @@ function LoginForm({ login }) {
     username: "",
     password: "",
   };
+
+  const { setUser, setToken } = useContext(UserContext);
 
   const [formData, setFormData] = useState(initialState);
   const [formError, setFormError] = useState(null);
@@ -24,15 +27,14 @@ function LoginForm({ login }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("formData is", formData);
-    console.log("login is", login);
-    // login(formData).then(function (status) {
-    //   if (status === "success") {
-    //     router.push("/");
-    //   } else {
-    //     console.log("Login did not work");
-    //     setFormError(status);
-    //   }
-    // });
+    login(formData).then(function (status) {
+      if (status === "success") {
+        router.push("/");
+      } else {
+        console.log("Login did not work");
+        setFormError(status);
+      }
+    });
   };
 
   return (

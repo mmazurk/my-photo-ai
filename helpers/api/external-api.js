@@ -1,10 +1,8 @@
-
 import axios from "axios";
 
-const BASE_URL = 'https://api.openai.com/v1/images/';
+const BASE_URL = "https://api.openai.com/v1/images/";
 
 class OpenAiAPI {
-
   static token;
 
   static async request(endpoint, data = {}, method = "post") {
@@ -27,10 +25,8 @@ class OpenAiAPI {
     let res = await this.request(`generations`, formData, "post");
     return res.data;
   }
-
 }
 
-// OpenAiAPI.token = process.env.REACT_APP_OPEN_API_TOKEN;
 OpenAiAPI.token = process.env.OPEN_API_TOKEN;
 
-export default OpenAiAPI; 
+export default OpenAiAPI;
