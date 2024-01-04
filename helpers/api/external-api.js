@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.openai.com/v1/images/";
+const BASE_URL = "https://api.openai.com/v1/images/generations";
 
 class OpenAiAPI {
   static token;

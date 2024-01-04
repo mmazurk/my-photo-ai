@@ -1,7 +1,7 @@
-import SearchForm from "./SearchForm";
+import SearchForm from "../../components/photo-search/SearchForm";
 import SearchExamples from "../../components/photo-search/search-examples";
 import SearchPhotoResult from "../../components/photo-search/search-photo-result";
-import LoadingIcon from "../common/LoadingIcon";
+import LoadingIcon from "../../components/icons/LoadingIcon";
 import { useState } from "react";
 
 function SearchPage() {

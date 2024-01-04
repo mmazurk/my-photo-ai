@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import UserContext from "../auth/userContext";
-import MyPhotoAPI from "../../api/api";
+import UserContext from "../../store/user-context";
+import MyPhotoAPI from "../../helpers/api/my-photo-api";
 
 function SearchPhotoResult({ prompt, url }) {
   const { user } = useContext(UserContext);

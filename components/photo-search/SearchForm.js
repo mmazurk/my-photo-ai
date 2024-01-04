@@ -1,6 +1,6 @@
-import Alert from "../common/Alert";
+import Alert from "../ui/Alert";
 import { useState } from "react";
-import OpenAiAPI from "../../api/externalApi";
+import OpenAiAPI from "../../helpers/api/external-api";
 
 function SearchForm({ promptInstructions, setPhotoURLStatus, setLoading }) {
   const initialState = "";
@@ -20,6 +20,7 @@ function SearchForm({ promptInstructions, setPhotoURLStatus, setLoading }) {
     try {
       const photoURL = await OpenAiAPI.getPhoto({
         prompt: formData,
+        model: "dall-e-3",
         n: 1,
         size: "1024x1024",
       });

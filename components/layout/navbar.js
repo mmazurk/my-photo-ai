@@ -12,12 +12,17 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid mx-3">
             <Link href="/" className="navbar-brand">
-              My Home Page
+              Home Page
             </Link>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link href="/about" className="nav-link">
-                  NOW YOU NEED TO PUT MENU OPTIONS HERE
+                <Link href="/library" className="nav-link">
+                  My Library
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/photos" className="nav-link">
+                  Create Photo
                 </Link>
               </li>
               <li className="nav-item">
@@ -32,7 +37,7 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
           <div className="container-fluid mx-3">
             <Link href="/" className="navbar-brand">
-              My Home Page
+              Home Page
             </Link>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">

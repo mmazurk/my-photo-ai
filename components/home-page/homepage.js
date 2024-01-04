@@ -46,26 +46,38 @@ function HomePage(props) {
             />
           </div>
         </div>
-
         <div className="row mt-5 d-flex align-items-center">
           <div className="col-md-6">
-            <div className="h-100 p-5 text-bg-dark rounded-3">
-              <h2>Log Into Your Account</h2>
-              <p>
-                Click the button below to log into your account. If you forgot
-                your password please click the other button.
-              </p>
-              <button
-                className="btn btn-outline-light"
-                type="button"
-                onClick={() => router.push("/auth")}
-              >
-                Login
-              </button>
-              <button className="btn btn-outline-light" type="button">
-                Reset Password
-              </button>
-            </div>
+            {user ? (
+              <div className="h-100 p-5 text-bg-dark rounded-3">
+                <h2>Welcome Back!</h2>
+                <p>You are logged in to your account.</p>
+                <button className="btn btn-outline-light" type="button">
+                  Create Photo
+                </button>
+                <button className="btn btn-outline-light" type="button">
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="h-100 p-5 text-bg-dark rounded-3">
+                <h2>Log Into Your Account</h2>
+                <p>
+                  Click the button below to log into your account. If you forgot
+                  your password please click the other button.
+                </p>
+                <button
+                  className="btn btn-outline-light"
+                  type="button"
+                  onClick={() => router.push("/auth")}
+                >
+                  Login
+                </button>
+                <button className="btn btn-outline-light" type="button">
+                  Reset Password
+                </button>
+              </div>
+            )}
           </div>
           <div className="col-md-5">
             <div className="h-100 p-5 bg-body-tertiary border rounded-3">
