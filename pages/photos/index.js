@@ -1,4 +1,4 @@
-import SearchForm from "../../components/photo-search/SearchForm";
+import SearchForm from "../../components/photo-search/search-form";
 import SearchExamples from "../../components/photo-search/search-examples";
 import SearchPhotoResult from "../../components/photo-search/search-photo-result";
 import LoadingIcon from "../../components/icons/LoadingIcon";

@@ -48,7 +48,7 @@ function HomePage(props) {
         </div>
         <div className="row mt-5 d-flex align-items-center">
           <div className="col-md-6">
-            {user ? (
+            {token ? (
               <div className="h-100 p-5 text-bg-dark rounded-3">
                 <h2>Welcome Back!</h2>
                 <p>You are logged in to your account.</p>

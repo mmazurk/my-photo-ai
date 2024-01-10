@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import UserContext from "../../store/user-context";
 import MyPhotoAPI from "../api/my-photo-api";
 
 export async function signUp(formData) {
@@ -25,11 +23,4 @@ export async function login(formData) {
   } catch (err) {
     return err;
   }
-}
-
-export async function logout() {
-  const { setUSer, setToken } = useContext(UserContext);
-  localStorage.removeItem("myAItoken");
-  setUSer({});
-  setToken(null);
 }

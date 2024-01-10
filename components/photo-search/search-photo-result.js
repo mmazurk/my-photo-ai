@@ -15,19 +15,19 @@ function SearchPhotoResult({ prompt, url }) {
       prompt_text: prompt,
       comments: "MLP placedholder comments",
     };
-    // console.log(data);
+    console.log(data);
 
-    try {
-      setisSaving(true);
-      const res = await MyPhotoAPI.savePrompt(data);
-      if (res) {
-        setisSaving(false);
-        setIsSaved(true);
-        // console.log("success!")
-      }
-    } catch (err) {
-      // console.log("saveUserPrompt() failed with", err);
-    }
+    // try {
+    //   setisSaving(true);
+    //   const res = await MyPhotoAPI.savePrompt(data);
+    //   if (res) {
+    //     setisSaving(false);
+    //     setIsSaved(true);
+    //     // console.log("success!")
+    //   }
+    // } catch (err) {
+    //   // console.log("saveUserPrompt() failed with", err);
+    // }
   }
 
   return (

@@ -26,7 +26,7 @@ function Navbar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" href="/logout">
+                <Link className="nav-link" href="/auth/logout">
                   Logout
                 </Link>
               </li>

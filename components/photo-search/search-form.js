@@ -1,6 +1,5 @@
 import Alert from "../ui/Alert";
 import { useState } from "react";
-import OpenAiAPI from "../../helpers/api/external-api";
 
 function SearchForm({ promptInstructions, setPhotoURLStatus, setLoading }) {
   const initialState = "";
@@ -14,17 +13,22 @@ function SearchForm({ promptInstructions, setPhotoURLStatus, setLoading }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log("You submitted", formData);
     setLoading(true);
 
     try {
-      const photoURL = await OpenAiAPI.getPhoto({
-        prompt: formData,
-        model: "dall-e-3",
-        n: 1,
-        size: "1024x1024",
+      const response = await fetch("./api/photo-request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt: formData,
+          model: "dall-e-3",
+        }),
       });
-      setPhotoURLStatus(photoURL[0].url, formData);
+      const data = await response.json();
+      console.log(data);
+      setPhotoURLStatus(data[0].url, formData);
       setLoading(false);
     } catch (err) {
       console.error("The API did not load and you got", err);
@@ -37,7 +41,7 @@ function SearchForm({ promptInstructions, setPhotoURLStatus, setLoading }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <section className="pt-5 text-center container">
+        <section className="pt-3 text-center container">
           <div className="row py-lg-5">
             <div className="col-lg-6 col-md-8 mx-auto">
               <h1 className="display-5 fw-bold">Search for Photo</h1>
