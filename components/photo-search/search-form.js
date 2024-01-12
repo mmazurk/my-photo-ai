@@ -26,9 +26,10 @@ function SearchForm({ promptInstructions, setPhotoURLStatus, setLoading }) {
           model: "dall-e-3",
         }),
       });
-      const data = await response.json();
-      console.log(data);
-      setPhotoURLStatus(data[0].url, formData);
+      const res = await response.json();
+      console.log("Total response is", res);
+      console.log("The URL is", res.data[0].url);
+      setPhotoURLStatus(res.data[0].url, formData);
       setLoading(false);
     } catch (err) {
       console.error("The API did not load and you got", err);
