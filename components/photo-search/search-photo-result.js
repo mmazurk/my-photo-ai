@@ -10,24 +10,24 @@ function SearchPhotoResult({ prompt, url }) {
   async function saveUserPrompt() {
     let data = {
       username: user.username,
-      title: "MLP placeholder prompt title",
-      date: new Date().toISOString().split("T")[0],
+      title: "placeholder",
+      date: new Date().toLocaleDateString("en-US"),
       prompt_text: prompt,
-      comments: "MLP placedholder comments",
+      comments: "placeholder",
     };
-    console.log(data);
+    console.log("Data is", data);
 
-    // try {
-    //   setisSaving(true);
-    //   const res = await MyPhotoAPI.savePrompt(data);
-    //   if (res) {
-    //     setisSaving(false);
-    //     setIsSaved(true);
-    //     // console.log("success!")
-    //   }
-    // } catch (err) {
-    //   // console.log("saveUserPrompt() failed with", err);
-    // }
+    try {
+      setisSaving(true);
+      const res = await MyPhotoAPI.savePrompt(data);
+      if (res) {
+        setisSaving(false);
+        setIsSaved(true);
+        console.log("Prompt saved successfully");
+      }
+    } catch (err) {
+      console.log("saveUserPrompt() failed with", err);
+    }
   }
 
   return (
