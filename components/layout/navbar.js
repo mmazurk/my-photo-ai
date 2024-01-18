@@ -41,6 +41,11 @@ function Navbar() {
             </Link>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
+                <Link href="/auth" className="nav-link">
+                  Login
+                </Link>
+              </li>
+              <li className="nav-item">
                 <Link href="/about" className="nav-link">
                   About Page
                 </Link>

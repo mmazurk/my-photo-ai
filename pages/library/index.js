@@ -1,13 +1,10 @@
 import Navbar from "../../components/layout/navbar";
+import UserLibrary from "../../components/library/user-library";
 
 function Library() {
   return (
     <>
-      <main className="container mt-5">
-        <h1 className="text-center">
-          This is the placeholder for the library page.
-        </h1>
-      </main>
+      <UserLibrary />
     </>
   );
 }
