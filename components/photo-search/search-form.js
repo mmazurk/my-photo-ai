@@ -1,11 +1,20 @@
 import Alert from "../ui/Alert";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function SearchForm({ promptInstructions, setPhotoURLStatus, setLoading }) {
-  const initialState = "";
+function SearchForm({
+  promptInstructions,
+  setPhotoURLStatus,
+  setLoading,
+  prompt,
+}) {
+  const initialState = prompt ? prompt : "";
 
   const [formData, setFormData] = useState(initialState);
   const [formError, setFormError] = useState(null);
+
+  useEffect(() => {
+    setFormData(initialState);
+  }, [initialState]);
 
   const handleChange = (e) => {
     setFormData(e.target.value);
