@@ -1,28 +1,33 @@
 import classes from "./user-library.module.css";
 import { useContext, useState, useEffect } from "react";
-import UserContext from "../../store/user-context";
+// import UserContext from "../../store/user-context";
 import MyPhotoAPI from "../../helpers/api/my-photo-api";
+import useAuth from "../../hooks/useAuth";
 import Link from "next/link";
 
 function UserLibrary() {
-  const { user, token } = useContext(UserContext);
+  // const { user, token } = useContext(UserContext);
+  const { user, token, isLoading } = useAuth();
   const [prompts, setPrompts] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(function loadPrompts() {
-    async function getData() {
-      setLoading(true);
-      if (user.username) {
-        MyPhotoAPI.token = token;
-        let prompts = await MyPhotoAPI.getPrompts(user.username);
-        const formattedPrompts = formatPrompts(prompts);
-        console.log(formattedPrompts);
-        setPrompts(formattedPrompts);
+  useEffect(
+    function loadPrompts() {
+      async function getData() {
+        setLoading(true);
+        if (user.username) {
+          MyPhotoAPI.token = token;
+          let prompts = await MyPhotoAPI.getPrompts(user.username);
+          const formattedPrompts = formatPrompts(prompts);
+          console.log(formattedPrompts);
+          setPrompts(formattedPrompts);
+        }
+        setLoading(false);
       }
-    }
-    getData();
-    setLoading(false);
-  }, []);
+      getData();
+    },
+    [token]
+  );
 
   // helper function to format prompt dates
   function formatPrompts(list) {
@@ -46,15 +51,17 @@ function UserLibrary() {
     const refreshedPrompts = prompts.filter(
       (item) => item.promptID !== promptID
     );
-    setPrompts(refreshedPrompts);
     try {
       let status = await MyPhotoAPI.deletePrompt(promptID);
+      console.log(status);
+      setPrompts(refreshedPrompts);
     } catch (err) {
+      console.error("Did not work because", err);
       setPrompts(originalPrompts);
     }
   }
 
-  if (loading) {
+  if (loading || isLoading) {
     return <h1>Loading ... </h1>;
   }
   return (
@@ -71,7 +78,8 @@ function UserLibrary() {
           <div className="col-md-5">
             <img
               className="img-fluid rounded"
-              src="https://images.unsplash.com/photo-1633783714412-c74668a14d73?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="https://images.unsplash.com/photo-1705825119849-b63da6e73ca8?q=80&w=1865&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              // src="https://images.unsplash.com/photo-1633783714412-c74668a14d73?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
           </div>
         </div>
@@ -103,7 +111,7 @@ function UserLibrary() {
                   <div key={item.promptID} className="col-md-6 my-4">
                     <div className="card">
                       <div className="card-body">
-                        <h3 className="card-title">Created on {item.date}</h3>
+                        <h4 className="card-title">{item.date}</h4>
                         <p className="card-text">{item.promptText}</p>
                         <Link
                           href={`./photos?promptText=${item.promptText}`}
@@ -112,13 +120,12 @@ function UserLibrary() {
                         >
                           Create Photo Again
                         </Link>
-                        <Link
-                          href="#"
+                        <button
                           className="btn btn-secondary"
-                          role="button"
+                          onClick={() => remove(item.promptID)}
                         >
                           Remove Prompt
-                        </Link>
+                        </button>
                       </div>
                     </div>
                   </div>

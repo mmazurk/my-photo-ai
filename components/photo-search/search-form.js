@@ -54,22 +54,22 @@ function SearchForm({
         <section className="pt-3 text-center container">
           <div className="row py-lg-5">
             <div className="col-lg-6 col-md-8 mx-auto">
-              <h1 className="display-5 fw-bold">Search for Photo</h1>
-              <p className="lead fw-light">{promptInstructions}</p>
+              <h1 className="display-5 fw-bold">Create A New Photo</h1>
+              <p className="lead fw-normal mb-4">{promptInstructions}</p>
 
-              <div className="row">
+              <div className="row align-items-center">
                 <div className="col-md-10">
-                  <input
-                    type="text"
+                  <textarea
                     id="search"
-                    className="form-control"
+                    className="form-control text-body-secondary"
+                    rows="2"
                     placeholder="Enter search term"
                     value={formData}
                     onChange={handleChange}
                   />
                 </div>
-                <div className="col-md-2">
-                  <button type="submit" className="btn btn-primary w-100">
+                <div className="col-md-2 px-0">
+                  <button type="submit" className="btn btn-primary">
                     Search
                   </button>
                 </div>

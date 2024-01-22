@@ -90,8 +90,12 @@ function HomePage(props) {
                 free. After that, we offer generous pricing plans that meet your
                 needs.
               </p>
-              {/* <button className="btn btn-outline-secondary" type="button" onClick={() => router.push("/signup")}> */}
-              <button className="btn btn-outline-secondary" type="button">
+              <button
+                className="btn btn-outline-secondary"
+                type="button"
+                onClick={() => router.push("/auth/signup")}
+              >
+                {/* <button className="btn btn-outline-secondary" type="button"> */}
                 Register
               </button>
             </div>

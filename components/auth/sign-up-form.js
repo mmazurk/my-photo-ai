@@ -1,15 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { useState } from "react";
-import FormItem from "./FormItem";
+import FormItem from "../ui/form-item";
 
-function SignUpForm({ signUp }) {
-  const navigate = useNavigate();
+function SignUpForm() {
+  const router = useRouter();
   const initialState = {
     username: "",
     password: "",
     firstName: "",
     lastName: "",
-    email: ""
+    email: "",
   };
 
   const [formData, setFormData] = useState(initialState);
@@ -24,7 +24,8 @@ function SignUpForm({ signUp }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signUp(formData).then(() => navigate("/"));
+    router.push("/");
+    // signUp(formData).then(() => navigate("/"));
   };
 
   return (
@@ -47,6 +48,11 @@ function SignUpForm({ signUp }) {
               </button>
             </form>
           </div>
+        </div>
+        <div className="alert alert-info mt-3" role="alert">
+          <span className="fw-bold">Please Note:</span> Signups are currently
+          offline; this page is for demonstration purposes only. Please press
+          Submit to return to the home page!
         </div>
       </div>
     </div>

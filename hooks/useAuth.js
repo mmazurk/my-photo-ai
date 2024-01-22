@@ -20,9 +20,9 @@ const useAuth = () => {
           setUser(currentUser);
         } catch (err) {}
       }
+      setIsLoading(false);
     }
     getCurrentUser();
-    setIsLoading(false);
   }, []);
   return { user, setUser, token, setToken, isLoading };
 };

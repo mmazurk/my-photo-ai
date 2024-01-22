@@ -8,19 +8,20 @@ import UserContext from "../../store/user-context";
 import useAuth from "../../hooks/useAuth";
 
 function SearchPage() {
-  const { user, token } = useContext(UserContext);
+  // const { user, token } = useContext(UserContext);
   const [photoURL, setPhotoURL] = useState(null);
   const [prompt, setPrompt] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const urlParam = router.query.promptText;
+  const { user, token, isLoading } = useAuth();
 
   // if the user refreshes, it will redirect to the home page
-  useEffect(() => {
-    if (!token) {
-      router.push("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!token) {
+  //     router.push("/");
+  //   }
+  // }, []);
 
   console.log("Current state of user is", user);
   console.log("Current state of token in", token);
@@ -32,7 +33,7 @@ function SearchPage() {
 
   return (
     <div>
-      {loading ? (
+      {loading || isLoading ? (
         <>
           <LoadingIcon />
           <SearchExamples />
