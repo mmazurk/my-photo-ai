@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { useRouter } from "next/router";
-import FormItem from "../ui/FormItem";
+import FormItem from "../ui/form-item";
 import Alert from "../ui/Alert";
 import UserContext from "../../store/user-context";
 
