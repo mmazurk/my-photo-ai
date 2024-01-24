@@ -1,18 +1,20 @@
-import classes from "./user-library.module.css";
-import { useContext, useState, useEffect } from "react";
-// import UserContext from "../../store/user-context";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import MyPhotoAPI from "../../helpers/api/my-photo-api";
 import useAuth from "../../hooks/useAuth";
 import Link from "next/link";
 
 function UserLibrary() {
-  // const { user, token } = useContext(UserContext);
+  const router = useRouter();
   const { user, token, isLoading } = useAuth();
   const [prompts, setPrompts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(
     function loadPrompts() {
+      if (!token) {
+        router.push("/auth");
+      }
       async function getData() {
         setLoading(true);
         if (user.username) {

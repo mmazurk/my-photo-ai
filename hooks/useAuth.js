@@ -2,8 +2,10 @@ import { useState, useEffect, useContext } from "react";
 import jwtDecode from "jwt-decode";
 import MyPhotoAPI from "../helpers/api/my-photo-api";
 import UserContext from "../store/user-context";
+import { useRouter } from "next/router";
 
 const useAuth = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const { user, setUser, token, setToken } = useContext(UserContext);
 
@@ -18,7 +20,9 @@ const useAuth = () => {
           let currentUser = await MyPhotoAPI.getUser(username);
           setToken(localStorageToken);
           setUser(currentUser);
-        } catch (err) {}
+        } catch (err) {
+          router.push("/auth");
+        }
       }
       setIsLoading(false);
     }

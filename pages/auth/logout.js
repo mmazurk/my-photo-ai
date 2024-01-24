@@ -1,16 +1,24 @@
-import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import UserContext from "../../store/user-context";
+import useAuth from "../../hooks/useAuth";
+import { useRouter } from "next/router";
 
 function Logout() {
-  const navigate = useRouter();
+  const { token } = useAuth();
   const { setUser, setToken } = useContext(UserContext);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!token) {
+      router.push("/auth");
+    }
+  }, []);
 
   function logout() {
     localStorage.removeItem("myAItoken");
     setUser({});
     setToken(null);
-    navigate.push("/");
+    router.push("/");
   }
 
   return (

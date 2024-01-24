@@ -1,5 +1,7 @@
 import Alert from "../ui/Alert";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import useAuth from "../../hooks/useAuth";
 
 function SearchForm({
   promptInstructions,
@@ -8,11 +10,15 @@ function SearchForm({
   prompt,
 }) {
   const initialState = prompt ? prompt : "";
-
+  const { token } = useAuth();
+  const router = useRouter();
   const [formData, setFormData] = useState(initialState);
   const [formError, setFormError] = useState(null);
 
   useEffect(() => {
+    if (!token) {
+      router.push("/auth");
+    }
     setFormData(initialState);
   }, [initialState]);
 

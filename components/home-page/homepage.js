@@ -36,7 +36,7 @@ function HomePage(props) {
   return (
     <div className="p-5 mb-4 bg-body-secondary rounded-3">
       <div className="container py-4">
-        <div className="row d-flex align-items-center">
+        <div className="row d-flex align-items-center justify-content-center">
           <div className="col-md-6 fs-4">
             <h1 className="display-5 fw-bold">My AI Photo Library</h1>
             <p>Use the power of AI to develop your own custom photos.</p>
@@ -49,7 +49,7 @@ function HomePage(props) {
             />
           </div>
         </div>
-        <div className="row mt-5 d-flex align-items-center">
+        <div className="row mt-5 d-flex align-items-center justify-content-center">
           <div className="col-md-6">
             {token ? (
               <div className="h-100 p-5 text-bg-dark rounded-3">

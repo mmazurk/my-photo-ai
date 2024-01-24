@@ -4,19 +4,19 @@ import Image from "next/image";
 function SearchExamples() {
   const sampleImages = [
     {
-      name: "programmer",
+      name: "professional",
       description:
-        "Image of a computer programmer working in a busy office with a cup of coffee.",
+        "Produce a photorealistic portrait image of a young European professional male dressed in formal office attire. He is facing forward, showcasing his confident demeanor and warm charisma. The image composition is akin to photographs usually posted on social networking platforms or company 'about us' pages. He should be centered in the image.",
     },
     {
-      name: "landscape",
+      name: "sunset",
       description:
-        "Early morning photography of a landscape shrouded in mist, with diffused light and long shadows.",
+        "(Simpler Example) Create a photo of a beautiful sunset over a sweeping plain.",
     },
     {
-      name: "nightstreet",
+      name: "seattle-night",
       description:
-        "Nighttime photo realistic image of a neon-lit and downtown city street, using long exposure to capture motion of a few cars.",
+        "Depict an urban scene of a city's downtown area reminiscent of Seattle at nighttime. Include details such as vibrant neon lights enlivening the environment, cars swiftly passing by on the wet streets and gentle raindrops falling, bouncing off the illuminated surfaces, creating a truly atmospheric spectacle.",
     },
   ];
 
@@ -29,7 +29,10 @@ function SearchExamples() {
               return (
                 <div className="col" key={imageSet.name}>
                   <div className="card shadow-sm">
-                    <img src={`${imageSet.name}.png`} alt={imageSet.name} />
+                    <img
+                      src={`photos/${imageSet.name}.png`}
+                      alt={imageSet.name}
+                    />
                     <div className="card-body">
                       <p className="card-text">{imageSet.description}</p>
                       <div className="d-flex justify-content-between align-items-center">
