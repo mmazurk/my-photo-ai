@@ -33,7 +33,7 @@ function SearchPage() {
 
   return (
     <div>
-      {loading || isLoading ? (
+      {loading ? (
         <>
           <LoadingIcon />
           <SearchExamples />

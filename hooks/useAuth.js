@@ -6,12 +6,11 @@ import { useRouter } from "next/router";
 
 const useAuth = () => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { user, setUser, token, setToken } = useContext(UserContext);
 
   useEffect(function loadUserInfo() {
     async function getCurrentUser() {
-      setIsLoading(true);
       let localStorageToken = localStorage.getItem("myAItoken");
       if (localStorageToken) {
         try {
