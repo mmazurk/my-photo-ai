@@ -10,13 +10,13 @@ function SearchForm({
   prompt,
 }) {
   const initialState = prompt ? prompt : "";
-  const { token } = useAuth();
+  const { token, isLoading } = useAuth();
   const router = useRouter();
   const [formData, setFormData] = useState(initialState);
   const [formError, setFormError] = useState(null);
 
   useEffect(() => {
-    if (!token) {
+    if (!isLoading && !token) {
       router.push("/auth");
     }
     setFormData(initialState);

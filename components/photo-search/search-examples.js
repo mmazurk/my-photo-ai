@@ -29,27 +29,19 @@ function SearchExamples() {
               return (
                 <div className="col" key={imageSet.name}>
                   <div className="card shadow-sm">
-                    <img
-                      src={`photos/${imageSet.name}.png`}
-                      alt={imageSet.name}
-                    />
+                    <div className={classes.imageContainer}>
+                      <Image
+                        src={`/photos/${imageSet.name}.png`}
+                        alt={imageSet.name}
+                        fill={true}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
+                        priority={true}
+                      />
+                    </div>
                     <div className="card-body">
                       <p className="card-text">{imageSet.description}</p>
                       <div className="d-flex justify-content-between align-items-center">
-                        <div className="btn-group">
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-outline-secondary"
-                          >
-                            View
-                          </button>
-                          <button
-                            type="button"
-                            className="btn btn-sm btn-outline-secondary"
-                          >
-                            Edit
-                          </button>
-                        </div>
+                        <div className="btn-group"></div>
                         <small className="text-body-secondary">more text</small>
                       </div>
                     </div>
@@ -57,103 +49,6 @@ function SearchExamples() {
                 </div>
               );
             })}
-
-            {/* <div className="col">
-              <div className="card shadow-sm">
-                <div className={classes.imageContainer}>
-                  <Image
-                    src="/programmer.png"
-                    alt="programmer"
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="center"
-                    priority={true}
-                  />
-                </div>
-                <div className="card-body">
-                  <p className="card-text">
-                    Image of a computer programmer working in a busy office with
-                    a cup of coffee.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">more text</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col">
-              <div className="card shadow-sm">
-                <img src="/landscape.png" alt="landscape" />
-                <div className="card-body">
-                  <p className="card-text">
-                    Early morning photography of a landscape shrouded in mist,
-                    with diffused light and long shadows.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">more text</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col">
-              <div className="card shadow-sm">
-                <img src="/nightstreet.png" alt="street at night" />
-                <div className="card-body">
-                  <p className="card-text">
-                    Nighttime photo realistic image of a neon-lit and downtown
-                    city street, using long exposure to capture motion of a few
-                    cars.
-                  </p>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        View
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        Edit
-                      </button>
-                    </div>
-                    <small className="text-body-secondary">more text</small>
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </div>
         </div>
       </section>
