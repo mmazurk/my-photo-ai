@@ -6,31 +6,10 @@ import UserContext from "../../store/user-context";
 import useAuth from "../../hooks/useAuth";
 
 function HomePage(props) {
-  // const [isLoading, setIsLoading] = useState(false);
-  // const { user, setUser, token, setToken } = useContext(UserContext);
-
   const { user, token } = useAuth();
 
-  // useEffect(function loadUserInfo() {
-  //   async function getCurrentUser() {
-  //     setIsLoading(true);
-  //     let localStorageToken = localStorage.getItem("myAItoken");
-  //     if (localStorageToken) {
-  //       try {
-  //         let { username } = jwtDecode(localStorageToken);
-  //         MyPhotoAPI.token = localStorageToken;
-  //         let currentUser = await MyPhotoAPI.getUser(username);
-  //         setToken(localStorageToken);
-  //         setUser(currentUser);
-  //       } catch (err) {}
-  //     }
-  //   }
-  //   getCurrentUser();
-  //   setIsLoading(false);
-  // }, []);
-
-  console.log("Current state of user is", user);
-  console.log("Current state of token is", token);
+  // console.log("Current state of user is", user);
+  // console.log("Current state of token is", token);
 
   const router = useRouter();
   return (

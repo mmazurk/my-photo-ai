@@ -37,12 +37,6 @@ function ProfileForm() {
       setFormError(
         "This page is for illustration only, please select Home Page in Nav Bar"
       );
-      // let status = await edit(user.username, formData);
-      // if (status === "success") {
-      //   updateUser(formData);
-      //   navigate("/");
-      // }
-      // setFormError("Error, one of the fields in the wrong format");
     } catch (err) {}
   };
 

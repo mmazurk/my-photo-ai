@@ -12,7 +12,7 @@ function UserLibrary() {
 
   useEffect(
     function loadPrompts() {
-      if (!token) {
+      if (!isLoading && !token) {
         router.push("/auth");
       }
       async function getData() {

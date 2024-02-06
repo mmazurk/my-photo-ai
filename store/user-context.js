@@ -1,6 +1,5 @@
 import { createContext, useState } from "react";
 
-// default values
 const UserContext = createContext({
   user: {},
   token: null,

@@ -1,4 +1,4 @@
-import { login, logout } from "../../helpers/auth/authentication";
+import { login } from "../../helpers/auth/authentication";
 import LoginForm from "../../components/auth/LoginForm";
 
 function LoginPage() {

@@ -1,8 +1,7 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import FormItem from "../ui/form-item";
 import Alert from "../ui/Alert";
-import UserContext from "../../store/user-context";
 
 function LoginForm({ login }) {
   const router = useRouter();
@@ -10,8 +9,6 @@ function LoginForm({ login }) {
     username: "",
     password: "",
   };
-
-  const { setUser, setToken } = useContext(UserContext);
 
   const [formData, setFormData] = useState(initialState);
   const [formError, setFormError] = useState(null);

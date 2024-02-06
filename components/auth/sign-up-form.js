@@ -25,7 +25,6 @@ function SignUpForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     router.push("/");
-    // signUp(formData).then(() => navigate("/"));
   };
 
   return (
@@ -58,6 +57,9 @@ function SignUpForm() {
     </div>
   );
 }
+
+//   This functionality will not be used in the demo
+//   If I want to allow users to register, I will uncomment
 
 //   function registerUser() {
 //     signUp({
