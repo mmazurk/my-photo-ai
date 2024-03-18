@@ -7,6 +7,7 @@ class MyPhotoAPI {
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
+    console.log("The URL is", BASE_URL);
     const url = `${BASE_URL}/${endpoint}`;
     const headers = { Authorization: `Bearer ${MyPhotoAPI.token}` };
     const params = method === "get" ? data : {};
