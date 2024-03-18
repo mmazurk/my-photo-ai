@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL || "http://localhost:3001";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3001";
 
 class MyPhotoAPI {
   // the token for interactive with the API will be stored here.
