@@ -1,8 +1,10 @@
+const { basePath } = require("./config");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  basePath: "/photoai",
-  assetPrefix: "/photoai",
+  basePath: basePath,
+  assetPrefix: basePath,
 };
 
 module.exports = nextConfig;

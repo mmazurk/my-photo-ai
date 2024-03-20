@@ -1,5 +1,6 @@
 import classes from "./search-examples.module.css";
 import Image from "next/image";
+import { basePath } from "../../config";
 
 function SearchExamples() {
   const sampleImages = [
@@ -31,7 +32,7 @@ function SearchExamples() {
                   <div className="card shadow-sm">
                     <div className={classes.imageContainer}>
                       <Image
-                        src={`/photos/${imageSet.name}.png`}
+                        src={`${basePath}/photos/${imageSet.name}.png`}
                         alt={imageSet.name}
                         fill={true}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw"
