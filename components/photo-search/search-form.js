@@ -42,8 +42,8 @@ function SearchForm({
         }),
       });
       const res = await response.json();
-      console.log("Total response is", res);
-      console.log("The URL is", res.data[0].url);
+      // console.log("Total response is", res);
+      // console.log("The URL is", res.data[0].url);
       setPhotoURLStatus(res.data[0].url, formData);
       setLoading(false);
     } catch (err) {

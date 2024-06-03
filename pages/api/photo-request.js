@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       },
       params: {},
     });
-    console.log(response.data);
+    // console.log(response.data);
     res.status(200).json(response.data);
   } catch (err) {
     console.error("API Error:", err.response);

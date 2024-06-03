@@ -21,7 +21,7 @@ function UserLibrary() {
           MyPhotoAPI.token = token;
           let prompts = await MyPhotoAPI.getPrompts(user.username);
           const formattedPrompts = formatPrompts(prompts);
-          console.log(formattedPrompts);
+          // console.log(formattedPrompts);
           setPrompts(formattedPrompts);
         }
         setLoading(false);
@@ -55,7 +55,7 @@ function UserLibrary() {
     );
     try {
       let status = await MyPhotoAPI.deletePrompt(promptID);
-      console.log(status);
+      // console.log(status);
       setPrompts(refreshedPrompts);
     } catch (err) {
       console.error("Did not work because", err);

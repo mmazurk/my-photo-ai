@@ -23,12 +23,12 @@ function LoginForm({ login }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("formData is", formData);
+    // console.log("formData is", formData);
     login(formData).then(function (status) {
       if (status === "success") {
         router.push("/");
       } else {
-        console.log("Login did not work");
+        // console.log("Login did not work");
         setFormError(status);
       }
     });

@@ -14,8 +14,8 @@ function SearchPage() {
   const urlParam = router.query.promptText;
   const { user, token, isLoading } = useAuth();
 
-  console.log("Current state of user is", user);
-  console.log("Current state of token in", token);
+  // console.log("Current state of user is", user);
+  // console.log("Current state of token in", token);
 
   function setPhotoURLStatus(url, prompt) {
     setPhotoURL(url);

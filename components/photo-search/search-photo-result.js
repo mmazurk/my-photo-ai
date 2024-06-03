@@ -15,7 +15,7 @@ function SearchPhotoResult({ prompt, url }) {
       prompt_text: prompt,
       comments: "placeholder",
     };
-    console.log("Data is", data);
+    // console.log("Data is", data);
 
     try {
       setisSaving(true);
@@ -23,10 +23,10 @@ function SearchPhotoResult({ prompt, url }) {
       if (res) {
         setisSaving(false);
         setIsSaved(true);
-        console.log("Prompt saved successfully");
+        // console.log("Prompt saved successfully");
       }
     } catch (err) {
-      console.log("saveUserPrompt() failed with", err);
+      // console.log("saveUserPrompt() failed with", err);
     }
   }
 
